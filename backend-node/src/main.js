@@ -43,7 +43,7 @@ const router = new Router();
 const socketTable = new Router();
 
 // Socket.io app 인스턴스 생성
-app.server = https.createServer(app.callback());
+//app.server = https.createServer(app.callback());
 
 // app.io
 //   .use((socket, next) => {
@@ -210,10 +210,10 @@ app.use(router.routes()).use(router.allowedMethods());
 
 // 소켓 적용, app.listen 오버라이드
 
-app.listen = (...args) => {
-  app.server.listen.call(app.server, ...args);
-  return app.server;
-};
+// app.listen = (...args) => {
+//   app.server.listen.call(app.server, ...args);
+//   return app.server;
+// };
 
 // const buildDirectory = path.resolve(__dirname, '../../blog-frontend/build');
 // app.use(serve(buildDirectory));
