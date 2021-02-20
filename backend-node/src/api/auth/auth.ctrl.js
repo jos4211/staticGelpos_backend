@@ -171,7 +171,7 @@ export const login = async (ctx) => {
 
   try {
     const user = await User.findByUserid(userid);
-    console.log('user', user);
+
     // 계정이 존재하지 않으면 에러 처리
     if (!user) {
       ctx.status = 401;
@@ -183,6 +183,9 @@ export const login = async (ctx) => {
       ctx.status = 401;
       return;
     }
+
+    console.log('user', user);
+
     ctx.body = user.serialize();
     const token = user.generateToken();
     ctx.cookies.set('access_token', token, {
