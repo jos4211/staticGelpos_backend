@@ -40,7 +40,12 @@ mongoose
 
 const app = new Koa();
 const router = new Router();
-const socketTable = new Router();
+const cors = require('@koa/cors');
+
+// koa CORS 문제 해결
+app.use(cors());
+
+//const socketTable = new Router();
 
 // Socket.io app 인스턴스 생성
 //app.server = https.createServer(app.callback());
@@ -200,7 +205,7 @@ const socketTable = new Router();
 
 // 라우터 설정
 router.use('/api', api.routes()); // api 라우트 적용
-router.use('/', socketTable.routes());
+//router.use('/', socketTable.routes());
 // 라우터 적용 전에 bodyParser 적용
 app.use(bodyParser());
 app.use(jwtMiddleware);
