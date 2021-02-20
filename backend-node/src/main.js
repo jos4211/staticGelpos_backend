@@ -8,8 +8,7 @@ import serve from 'koa-static';
 import path from 'path';
 import send from 'koa-send';
 
-import http from 'http';
-import socketIO from 'socket.io';
+import https from 'https';
 
 import Table from './models/table';
 import Invoice from './models/invoice';
@@ -44,8 +43,7 @@ const router = new Router();
 const socketTable = new Router();
 
 // Socket.io app 인스턴스 생성
-app.server = http.createServer(app.callback());
-app.io = socketIO(app.server, {});
+app.server = https.createServer(app.callback());
 
 // app.io
 //   .use((socket, next) => {
