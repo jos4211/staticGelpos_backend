@@ -186,11 +186,13 @@ export const login = async (ctx) => {
 
     console.log('user', user);
 
+    console.log('ctx.cookies', ctx.cookies);
+
     ctx.body = user.serialize();
     const token = user.generateToken();
     ctx.cookies.set('access_token', token, {
       maxAge: 1000 * 60 * 60 * 24 * 7, // 7일
-      // httpOnly: true,
+      httpOnly: true,
       // secure: true,
     });
   } catch (e) {
